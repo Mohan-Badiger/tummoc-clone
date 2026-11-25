@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import {
   BmtcPassIcon,
@@ -11,7 +11,7 @@ interface PassesAndTicketsProps {
   onSelectPass: (type: string) => void;
 }
 
-export const PassesAndTickets: React.FC<PassesAndTicketsProps> = ({
+export const PassesAndTickets: React.FC<PassesAndTicketsProps> = memo(({
   onSelectPass,
 }) => {
   return (
@@ -64,7 +64,7 @@ export const PassesAndTickets: React.FC<PassesAndTicketsProps> = ({
       </View>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

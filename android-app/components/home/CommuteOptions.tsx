@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { colors, typography, spacing, radii } from '../../theme';
 
@@ -6,7 +6,7 @@ interface CommuteOptionsProps {
   onSelectOption: (option: string) => void;
 }
 
-export const CommuteOptions: React.FC<CommuteOptionsProps> = ({
+export const CommuteOptions: React.FC<CommuteOptionsProps> = memo(({
   onSelectOption,
 }) => {
   return (
@@ -85,7 +85,7 @@ export const CommuteOptions: React.FC<CommuteOptionsProps> = ({
       </View>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

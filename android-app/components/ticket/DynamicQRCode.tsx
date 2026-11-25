@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, memo } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
-import Svg, { Rect, Circle } from 'react-native-svg';
+import Svg, { Rect, Circle, Path } from 'react-native-svg';
 
 interface DynamicQRCodeProps {
   size?: number;
   intervalMs?: number;
 }
 
-export const DynamicQRCode: React.FC<DynamicQRCodeProps> = ({
+export const DynamicQRCode: React.FC<DynamicQRCodeProps> = memo(({
   size = 210,
   intervalMs = 800, // Refreshes periodically like authentic BMTC dynamic passes
 }) => {
@@ -83,6 +83,19 @@ export const DynamicQRCode: React.FC<DynamicQRCodeProps> = ({
     return activeCells;
   }, [seed]);
 
+  // Production optimization: Single composite SVG path instead of 200+ distinct React SVG nodes
+  const qrPath = useMemo(() => {
+    let d = '';
+    const w = +(cellSize + 0.3).toFixed(2);
+    for (let i = 0; i < cells.length; i++) {
+      const cell = cells[i];
+      const x = +(cell.c * cellSize).toFixed(2);
+      const y = +(cell.r * cellSize).toFixed(2);
+      d += `M${x},${y}h${w}v${w}h-${w}Z `;
+    }
+    return d;
+  }, [cells, cellSize]);
+
   const centerLogoSize = cellSize * 7;
 
   return (
@@ -91,17 +104,8 @@ export const DynamicQRCode: React.FC<DynamicQRCodeProps> = ({
         {/* Crisp White Canvas */}
         <Rect x={0} y={0} width={size} height={size} fill="#FFFFFF" />
 
-        {/* Dynamic Dark Data Cells */}
-        {cells.map((cell, idx) => (
-          <Rect
-            key={idx}
-            x={cell.c * cellSize}
-            y={cell.r * cellSize}
-            width={cellSize + 0.3}
-            height={cellSize + 0.3}
-            fill="#111827"
-          />
-        ))}
+        {/* Dynamic Dark Data Cells rendered as single optimized path */}
+        <Path d={qrPath} fill="#111827" />
 
         {/* Center Circular Mask */}
         <Circle
@@ -131,7 +135,7 @@ export const DynamicQRCode: React.FC<DynamicQRCodeProps> = ({
       </View>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

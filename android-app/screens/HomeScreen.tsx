@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { StyleSheet, ScrollView, View, Alert } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -27,21 +27,21 @@ export const HomeScreen: React.FC = () => {
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [profileSheetVisible, setProfileSheetVisible] = useState(false);
 
-  const handleSelectOption = (option: string) => {
+  const handleSelectOption = useCallback((option: string) => {
     Alert.alert(option, `Opening ${option} schedule and booking options.`);
-  };
+  }, []);
 
-  const handleSelectPass = (type: string) => {
+  const handleSelectPass = useCallback((type: string) => {
     Alert.alert(type, `Booking for ${type} is ready.`);
-  };
+  }, []);
 
-  const handleDrawerNavigate = (route: string) => {
+  const handleDrawerNavigate = useCallback((route: string) => {
     if (route === 'TummocMoney') {
       navigation.navigate('MainTabs', { screen: 'TummocMoneyTab' });
     } else {
       Alert.alert('Navigation', `Navigating to ${route}`);
     }
-  };
+  }, [navigation]);
 
   return (
     <View style={[styles.screen, { paddingTop: insets.top }]}>

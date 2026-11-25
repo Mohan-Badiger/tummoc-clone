@@ -3,6 +3,7 @@
     "name": "Tummoc",
     "slug": "tummoc-clone",
     "version": "3.6.9",
+    "scheme": "tummoc",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -17,6 +18,11 @@
         "backgroundColor": "#0E2D39",
         "foregroundImage": "./assets/android-icon-foreground.png"
       },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "CAMERA"
+      ],
       "predictiveBackGestureEnabled": false,
       "softwareKeyboardLayoutMode": "pan"
     }
