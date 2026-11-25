@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
-import { AutoRickshawIcon } from '../common/TummocIcons';
 import { colors, typography, spacing, radii } from '../../theme';
 
 interface CommuteOptionsProps {
@@ -48,7 +47,7 @@ export const CommuteOptions: React.FC<CommuteOptionsProps> = ({
           <Text style={styles.tileLabel}>Metro</Text>
         </View>
 
-        {/* 3. Direct Ride (Auto Rickshaw with orange Cash badge) */}
+        {/* 3. Direct Ride (Scooter with orange Cash badge) */}
         <View style={styles.tileWrapper}>
           <TouchableOpacity
             style={styles.tile}
@@ -59,7 +58,11 @@ export const CommuteOptions: React.FC<CommuteOptionsProps> = ({
             <View style={styles.cashBadge}>
               <Text style={styles.cashText}>Cash</Text>
             </View>
-            <AutoRickshawIcon size={25} />
+            <Image
+              source={require('../../assets/icons/direct_ride.png')}
+              style={styles.directRideIcon}
+              resizeMode="contain"
+            />
           </TouchableOpacity>
           <Text style={styles.tileLabel}>Direct Ride</Text>
         </View>
@@ -120,6 +123,11 @@ const styles = StyleSheet.create({
   },
   metroIcon: {
     width: 21,
+    height: 23,
+    tintColor: colors.textPrimary,
+  },
+  directRideIcon: {
+    width: 23,
     height: 23,
     tintColor: colors.textPrimary,
   },
