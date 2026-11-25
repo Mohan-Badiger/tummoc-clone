@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { ChevronRight } from 'lucide-react-native';
-import { MetroStationPinIcon } from '../common/TummocIcons';
+import { BusStopPinIcon } from '../common/TummocIcons';
 import { colors, typography, spacing, radii, shadows } from '../../theme';
 
 interface BusStopsFloatingCardProps {
@@ -19,10 +19,10 @@ export const BusStopsFloatingCard: React.FC<BusStopsFloatingCardProps> = ({
         activeOpacity={0.9}
       >
         <View style={styles.pinWrapper}>
-          <MetroStationPinIcon size={32} />
+          <BusStopPinIcon size={34} />
         </View>
 
-        <Text style={styles.title}>Metro stations near you</Text>
+        <Text style={styles.title}>Bus stops near you</Text>
 
         <View style={styles.actionButton}>
           <ChevronRight size={20} color={colors.white} strokeWidth={2.8} />

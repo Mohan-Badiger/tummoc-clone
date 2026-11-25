@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   TummocHomeNavIcon,
@@ -32,7 +32,7 @@ export const BottomTabNavigator: React.FC = () => {
         component={HomeScreen}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({ color }) => <TummocHomeNavIcon size={23} color={color} />,
+          tabBarIcon: ({ color }) => <TummocHomeNavIcon size={24} color={color} />,
         }}
       />
       <Tab.Screen
@@ -40,7 +40,7 @@ export const BottomTabNavigator: React.FC = () => {
         component={TummocMoneyScreen}
         options={{
           tabBarLabel: 'Tummoc Money',
-          tabBarIcon: ({ color }) => <TummocMoneyNavIcon size={23} color={color} />,
+          tabBarIcon: ({ color }) => <TummocMoneyNavIcon size={24} color={color} />,
         }}
       />
       <Tab.Screen
@@ -48,7 +48,7 @@ export const BottomTabNavigator: React.FC = () => {
         component={BookingsScreen}
         options={{
           tabBarLabel: 'Bookings',
-          tabBarIcon: ({ color }) => <TummocBookingsNavIcon size={23} color={color} />,
+          tabBarIcon: ({ color }) => <TummocBookingsNavIcon size={24} color={color} />,
         }}
       />
       <Tab.Screen
@@ -56,9 +56,14 @@ export const BottomTabNavigator: React.FC = () => {
         component={PersonalScreen}
         options={{
           tabBarLabel: 'Personal',
-          tabBarBadge: 'New',
-          tabBarBadgeStyle: styles.badge,
-          tabBarIcon: ({ color }) => <TummocPersonalNavIcon size={23} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <View style={styles.personalIconWrapper}>
+              <View style={styles.newBadgePill}>
+                <Text style={styles.newBadgeText}>New</Text>
+              </View>
+              <TummocPersonalNavIcon size={21} color={color} />
+            </View>
+          ),
         }}
       />
     </Tab.Navigator>
@@ -67,26 +72,35 @@ export const BottomTabNavigator: React.FC = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 62,
+    height: 60,
     backgroundColor: colors.white,
-    borderTopColor: colors.borderLight,
+    borderTopColor: '#EAEAEA',
     borderTopWidth: 1,
-    paddingBottom: 6,
-    paddingTop: 6,
+    paddingBottom: 5,
+    paddingTop: 5,
     elevation: 8,
   },
   tabBarLabel: {
-    fontSize: typography.size.xs,
+    fontSize: 11,
     fontWeight: typography.weight.medium,
+    marginTop: 1,
   },
-  badge: {
-    backgroundColor: colors.accentOrange,
+  personalIconWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: -4,
+  },
+  newBadgePill: {
+    backgroundColor: '#FF6E00',
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    borderRadius: 3,
+    marginBottom: 1,
+  },
+  newBadgeText: {
     color: colors.white,
-    fontSize: 9,
-    fontWeight: '700',
-    height: 16,
-    minWidth: 26,
-    borderRadius: 8,
-    lineHeight: 14,
+    fontSize: 8.5,
+    fontWeight: '800',
+    lineHeight: 10,
   },
 });

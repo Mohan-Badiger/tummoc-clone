@@ -1,11 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import {
-  CommuteBusIcon,
-  CommuteMetroIcon,
-  DirectRideScooterIcon,
-  AirportRailIcon,
-} from '../common/TummocIcons';
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { colors, typography, spacing, radii } from '../../theme';
 
 interface CommuteOptionsProps {
@@ -27,7 +21,11 @@ export const CommuteOptions: React.FC<CommuteOptionsProps> = ({
             onPress={() => onSelectOption('Bus')}
             activeOpacity={0.7}
           >
-            <CommuteBusIcon size={30} color={colors.textPrimary} />
+            <Image
+              source={require('../../assets/icons/bus.png')}
+              style={styles.busIcon}
+              resizeMode="contain"
+            />
           </TouchableOpacity>
           <Text style={styles.tileLabel}>Bus</Text>
         </View>
@@ -39,23 +37,31 @@ export const CommuteOptions: React.FC<CommuteOptionsProps> = ({
             onPress={() => onSelectOption('Metro')}
             activeOpacity={0.7}
           >
-            <CommuteMetroIcon size={30} color={colors.textPrimary} />
+            <Image
+              source={require('../../assets/icons/metro.png')}
+              style={styles.metroIcon}
+              resizeMode="contain"
+            />
           </TouchableOpacity>
           <Text style={styles.tileLabel}>Metro</Text>
         </View>
 
-        {/* 3. Direct Ride (Scooter / Bike taxi with Cash badge) */}
+        {/* 3. Direct Ride (Scooter / Bike taxi with orange Cash badge) */}
         <View style={styles.tileWrapper}>
           <TouchableOpacity
             style={styles.tile}
             onPress={() => onSelectOption('Direct Ride')}
             activeOpacity={0.7}
           >
-            {/* Orange "Cash" Badge */}
+            {/* Orange "Cash" Badge sitting on top border */}
             <View style={styles.cashBadge}>
               <Text style={styles.cashText}>Cash</Text>
             </View>
-            <DirectRideScooterIcon size={28} color={colors.textPrimary} />
+            <Image
+              source={require('../../assets/icons/scooter.png')}
+              style={styles.scooterIcon}
+              resizeMode="contain"
+            />
           </TouchableOpacity>
           <Text style={styles.tileLabel}>Direct Ride</Text>
         </View>
@@ -67,7 +73,11 @@ export const CommuteOptions: React.FC<CommuteOptionsProps> = ({
             onPress={() => onSelectOption('Airport Rail')}
             activeOpacity={0.7}
           >
-            <AirportRailIcon size={30} color={colors.textPrimary} />
+            <Image
+              source={require('../../assets/icons/airport_rail.png')}
+              style={styles.railIcon}
+              resizeMode="contain"
+            />
           </TouchableOpacity>
           <Text style={styles.tileLabel}>Airport Rail</Text>
         </View>
@@ -82,7 +92,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xl,
   },
   sectionTitle: {
-    fontSize: typography.size.md + 1,
+    fontSize: typography.size.md,
     fontWeight: typography.weight.bold,
     color: colors.textPrimary,
     marginBottom: spacing.md,
@@ -90,7 +100,7 @@ const styles = StyleSheet.create({
   tilesRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    gap: spacing.sm,
+    gap: spacing.sm + 2,
   },
   tileWrapper: {
     flex: 1,
@@ -99,11 +109,31 @@ const styles = StyleSheet.create({
   tile: {
     width: '100%',
     aspectRatio: 1,
-    backgroundColor: colors.tileGray,
+    backgroundColor: '#F3F6F8', // Authentic soft light gray tile
     borderRadius: radii.card,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
+  },
+  busIcon: {
+    width: 32,
+    height: 32,
+    tintColor: colors.textPrimary,
+  },
+  metroIcon: {
+    width: 30,
+    height: 33,
+    tintColor: colors.textPrimary,
+  },
+  scooterIcon: {
+    width: 28,
+    height: 34,
+    tintColor: colors.textPrimary,
+  },
+  railIcon: {
+    width: 28,
+    height: 32,
+    tintColor: colors.textPrimary,
   },
   cashBadge: {
     position: 'absolute',
@@ -112,6 +142,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 1.5,
     borderRadius: radii.pill,
+    zIndex: 2,
   },
   cashText: {
     color: colors.white,
@@ -120,7 +151,7 @@ const styles = StyleSheet.create({
   },
   tileLabel: {
     marginTop: spacing.sm,
-    fontSize: typography.size.xs + 0.5,
+    fontSize: 11.5,
     fontWeight: typography.weight.medium,
     color: colors.textPrimary,
     textAlign: 'center',

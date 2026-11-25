@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { Bus, ChevronRight } from 'lucide-react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
+import { ChevronRight } from 'lucide-react-native';
 import { colors, typography, spacing, radii } from '../../theme';
 
 interface TravelOutstationCardProps {
@@ -20,7 +20,11 @@ export const TravelOutstationCard: React.FC<TravelOutstationCardProps> = ({
         activeOpacity={0.85}
       >
         <View style={styles.iconCircle}>
-          <Bus size={32} color={colors.headerDarkTeal} strokeWidth={2} />
+          <Image
+            source={require('../../assets/icons/outstation_bus.png')}
+            style={styles.busImage}
+            resizeMode="contain"
+          />
         </View>
 
         <Text style={styles.title}>Book outstation bus tickets</Text>
@@ -37,7 +41,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xl,
   },
   sectionTitle: {
-    fontSize: typography.size.md + 1,
+    fontSize: typography.size.md,
     fontWeight: typography.weight.bold,
     color: colors.textPrimary,
     marginBottom: spacing.md,
@@ -49,7 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: radii.card,
     borderWidth: 1.5,
     borderColor: colors.primaryCyan,
-    paddingVertical: spacing.md,
+    paddingVertical: spacing.md - 2,
     paddingHorizontal: spacing.lg,
   },
   iconCircle: {
@@ -61,9 +65,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: spacing.md,
   },
+  busImage: {
+    width: 32,
+    height: 28,
+    tintColor: colors.headerDarkTeal,
+  },
   title: {
     flex: 1,
-    fontSize: typography.size.md,
+    fontSize: 14.5,
     fontWeight: typography.weight.bold,
     color: colors.textPrimary,
   },
