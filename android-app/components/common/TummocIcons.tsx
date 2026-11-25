@@ -64,32 +64,54 @@ export const MetroTicketIcon: React.FC<IconProps> = ({
  * QR matrix markers on top and bold dark pill with "ALL-IN-ONE" below.
  */
 export const AllInOneTicketIcon: React.FC<IconProps> = ({
-  width = 36,
-  height = 22,
+  width = 38,
+  height = 26,
   size,
   color = '#0F2F38',
 }) => {
   const w = size ?? width;
-  const h = size ? size * (22 / 36) : height;
+  const h = size ? size * (26 / 38) : height;
   return (
-    <Svg width={w} height={h} viewBox="0 0 36 22" fill="none">
-      {/* QR Corner Markers */}
-      <Rect x="4" y="1" width="3.5" height="3.5" rx="0.6" fill={color} />
-      <Rect x="12" y="1" width="3.5" height="3.5" rx="0.6" fill={color} />
-      <Rect x="20" y="1" width="3.5" height="3.5" rx="0.6" fill={color} />
-      <Rect x="28" y="1" width="3.5" height="3.5" rx="0.6" fill={color} />
+    <Svg width={w} height={h} viewBox="0 0 38 26" fill="none">
+      {/* --- Dotted QR Code Icon (Centered above ALL-IN-ONE text) --- */}
+      {/* Top-Left Finder */}
+      <Rect x="12" y="1" width="4.2" height="4.2" rx="0.8" stroke={color} strokeWidth="0.8" fill="none" />
+      <Rect x="13.3" y="2.3" width="1.6" height="1.6" rx="0.3" fill={color} />
 
-      {/* Dark Pill Bar */}
-      <Rect x="1" y="9" width="34" height="12" rx="2.5" fill={color} />
-      {/* White ALL-IN-ONE Label */}
+      {/* Top-Right Finder */}
+      <Rect x="21.8" y="1" width="4.2" height="4.2" rx="0.8" stroke={color} strokeWidth="0.8" fill="none" />
+      <Rect x="23.1" y="2.3" width="1.6" height="1.6" rx="0.3" fill={color} />
+
+      {/* Bottom-Left Finder */}
+      <Rect x="12" y="9.2" width="4.2" height="4.2" rx="0.8" stroke={color} strokeWidth="0.8" fill="none" />
+      <Rect x="13.3" y="10.5" width="1.6" height="1.6" rx="0.3" fill={color} />
+
+      {/* Dotted Data Points */}
+      <Circle cx="19" cy="2.2" r="0.75" fill={color} />
+      <Circle cx="19" cy="4.2" r="0.75" fill={color} />
+
+      <Circle cx="13.5" cy="7.2" r="0.75" fill={color} />
+      <Circle cx="16.5" cy="7.2" r="0.75" fill={color} />
+      <Circle cx="19" cy="7.2" r="0.75" fill={color} />
+      <Circle cx="21.5" cy="7.2" r="0.75" fill={color} />
+      <Circle cx="24.5" cy="7.2" r="0.75" fill={color} />
+
+      <Circle cx="19" cy="10.2" r="0.75" fill={color} />
+      <Circle cx="22" cy="10.2" r="0.75" fill={color} />
+      <Circle cx="24.5" cy="10.2" r="0.75" fill={color} />
+      <Circle cx="19" cy="12.5" r="0.75" fill={color} />
+      <Circle cx="22" cy="12.5" r="0.75" fill={color} />
+      <Circle cx="24.5" cy="12.5" r="0.75" fill={color} />
+
+      {/* --- ALL-IN-ONE text (No background, dark text) --- */}
       <SvgText
-        x="18"
-        y="17.5"
-        fill="#FFFFFF"
-        fontSize="5.8"
-        fontWeight="bold"
+        x="19"
+        y="22.5"
+        fill={color}
+        fontSize="5.6"
+        fontWeight="800"
         textAnchor="middle"
-        letterSpacing="0.3"
+        letterSpacing="0.4"
       >
         ALL-IN-ONE
       </SvgText>

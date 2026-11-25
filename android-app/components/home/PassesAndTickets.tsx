@@ -57,7 +57,7 @@ export const PassesAndTickets: React.FC<PassesAndTicketsProps> = ({
           >
             <View style={[styles.cutout, styles.cutoutLeft]} />
             <View style={[styles.cutout, styles.cutoutRight]} />
-            <AllInOneTicketIcon width={36} height={22} color={colors.textPrimary} />
+            <AllInOneTicketIcon width={36} height={25} color={colors.textPrimary} />
           </TouchableOpacity>
           <Text style={styles.cardLabel}>All-in-One Ticket</Text>
         </View>

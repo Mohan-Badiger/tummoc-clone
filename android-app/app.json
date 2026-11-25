@@ -7,14 +7,14 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "backgroundColor": "#07222B",
+      "backgroundColor": "#0E2D39",
       "resizeMode": "contain"
     },
     "android": {
       "package": "org.transhelp.bykerr.clone",
       "versionCode": 369,
       "adaptiveIcon": {
-        "backgroundColor": "#07222B",
+        "backgroundColor": "#0E2D39",
         "foregroundImage": "./assets/android-icon-foreground.png"
       },
       "predictiveBackGestureEnabled": false,
