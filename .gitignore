@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+android-app/node_modules/
+
+# Expo & Build artifacts
+.expo/
+android-app/.expo/
+dist/
+dist-test/
+android-app/dist/
+android-app/dist-test/
+web-build/
+expo-env.d.ts
+
+# Native builds
+android-app/android/
+android-app/ios/
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro & caches
+.metro-health-check*
+*.tsbuildinfo
+.npm/
+
+# Environment files
+.env
+.env*.local
+
+# Temporary extracted video frames
+reference/screenshots/video_frames/
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

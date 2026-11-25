@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Tummoc",
+    "slug": "tummoc-clone",
+    "version": "3.6.9",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#07222B",
+      "resizeMode": "contain"
+    },
+    "android": {
+      "package": "org.transhelp.bykerr.clone",
+      "versionCode": 369,
+      "adaptiveIcon": {
+        "backgroundColor": "#07222B",
+        "foregroundImage": "./assets/android-icon-foreground.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "softwareKeyboardLayoutMode": "pan"
+    }
+  }
+}
