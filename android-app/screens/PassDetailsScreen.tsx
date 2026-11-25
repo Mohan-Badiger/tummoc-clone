@@ -175,6 +175,9 @@ export const PassDetailsScreen: React.FC = () => {
             </View>
           </View>
 
+          {/* Divider above Generate Mail Receipt */}
+          <View style={styles.dashedDivider} />
+
           {/* Generate Mail Receipt Button */}
           <TouchableOpacity
             style={styles.mailReceiptButton}
@@ -185,6 +188,7 @@ export const PassDetailsScreen: React.FC = () => {
             <Text style={styles.mailReceiptText}>Generate mail receipt</Text>
           </TouchableOpacity>
 
+          {/* Divider below Generate Mail Receipt */}
           <View style={styles.dashedDivider} />
 
           {/* Dynamic Refreshing QR Code */}
@@ -283,35 +287,36 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   passTitle: {
-    fontSize: typography.size.md,
+    fontSize: 17.5,
     fontWeight: typography.weight.bold,
-    color: '#1F2937',
+    color: '#111827',
+    lineHeight: 22,
   },
   badgesRow: {
     flexDirection: 'row',
-    gap: spacing.sm,
-    marginTop: 6,
+    gap: spacing.sm + 2,
+    marginTop: 7,
   },
   monthlyBadge: {
     backgroundColor: '#E8F8EA',
-    paddingHorizontal: 9,
-    paddingVertical: 2,
-    borderRadius: 4,
+    paddingHorizontal: 12,
+    paddingVertical: 3.5,
+    borderRadius: 5,
   },
   monthlyBadgeText: {
     color: '#2E7D32',
-    fontSize: typography.size.xs,
+    fontSize: 13,
     fontWeight: '700',
   },
   ordinaryBadge: {
     backgroundColor: '#EEEEEE',
-    paddingHorizontal: 9,
-    paddingVertical: 2,
-    borderRadius: 4,
+    paddingHorizontal: 12,
+    paddingVertical: 3.5,
+    borderRadius: 5,
   },
   ordinaryBadgeText: {
     color: '#616161',
-    fontSize: typography.size.xs,
+    fontSize: 13,
     fontWeight: '700',
   },
   passIdRow: {
@@ -355,7 +360,7 @@ const styles = StyleSheet.create({
     fontWeight: typography.weight.semiBold,
   },
   sectionHeading: {
-    fontSize: typography.size.md,
+    fontSize: 18,
     fontWeight: typography.weight.bold,
     color: colors.textPrimary,
   },
