@@ -62,10 +62,13 @@ export const HomeScreen: React.FC = () => {
 
         {/* Floating Search Bar */}
         <SearchCard
-          placeholder="Search destination"
+          placeholder="Plan your trip"
           onPress={() => Alert.alert('Search', 'Opening trip planner')}
           onFavoritePress={() => Alert.alert('Favorites', 'View saved places')}
         />
+
+        {/* Business Profile Banner */}
+        <BusinessProfileBanner onLinkPress={() => setProfileSheetVisible(true)} />
 
         {/* Passes & Tickets Section */}
         <PassesAndTickets onSelectPass={handleSelectPass} />

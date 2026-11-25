@@ -16,6 +16,9 @@ export const PassesAndTickets: React.FC<PassesAndTicketsProps> = ({
 }) => {
   return (
     <View style={styles.container}>
+      {/* Authentic Section Title */}
+      <Text style={styles.sectionTitle}>Passes & Tickets</Text>
+
       <View style={styles.cardsRow}>
         {/* Card 1: BMTC Pass */}
         <View style={styles.cardWrapper}>
@@ -26,7 +29,7 @@ export const PassesAndTickets: React.FC<PassesAndTicketsProps> = ({
           >
             <View style={[styles.cutout, styles.cutoutLeft]} />
             <View style={[styles.cutout, styles.cutoutRight]} />
-            <BmtcPassIcon width={46} height={25} color={colors.textPrimary} />
+            <BmtcPassIcon width={34} height={19} color={colors.textPrimary} />
           </TouchableOpacity>
           <Text style={styles.cardLabel}>BMTC Pass</Text>
         </View>
@@ -40,7 +43,7 @@ export const PassesAndTickets: React.FC<PassesAndTicketsProps> = ({
           >
             <View style={[styles.cutout, styles.cutoutLeft]} />
             <View style={[styles.cutout, styles.cutoutRight]} />
-            <MetroTicketIcon size={34} color={colors.textPrimary} />
+            <MetroTicketIcon size={25} color={colors.textPrimary} />
           </TouchableOpacity>
           <Text style={styles.cardLabel}>Metro Ticket</Text>
         </View>
@@ -54,7 +57,7 @@ export const PassesAndTickets: React.FC<PassesAndTicketsProps> = ({
           >
             <View style={[styles.cutout, styles.cutoutLeft]} />
             <View style={[styles.cutout, styles.cutoutRight]} />
-            <AllInOneTicketIcon width={48} height={31} color={colors.textPrimary} />
+            <AllInOneTicketIcon width={36} height={22} color={colors.textPrimary} />
           </TouchableOpacity>
           <Text style={styles.cardLabel}>All-in-One Ticket</Text>
         </View>
@@ -66,8 +69,13 @@ export const PassesAndTickets: React.FC<PassesAndTicketsProps> = ({
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: spacing.lg,
-    marginTop: spacing.xs,
     marginBottom: spacing.xl,
+  },
+  sectionTitle: {
+    fontSize: 15,
+    fontWeight: typography.weight.bold,
+    color: colors.textPrimary,
+    marginBottom: 12,
   },
   cardsRow: {
     flexDirection: 'row',
@@ -80,7 +88,7 @@ const styles = StyleSheet.create({
   },
   ticketCard: {
     width: '100%',
-    height: 62,
+    height: 52,
     backgroundColor: '#D7F1F5', // Authentic pastel cyan ticket color
     borderRadius: radii.sm + 2,
     alignItems: 'center',
@@ -90,22 +98,22 @@ const styles = StyleSheet.create({
   },
   cutout: {
     position: 'absolute',
-    width: 14,
-    height: 14,
-    borderRadius: 7,
+    width: 12,
+    height: 12,
+    borderRadius: 6,
     backgroundColor: colors.white,
     top: '50%',
-    marginTop: -7,
+    marginTop: -6,
   },
   cutoutLeft: {
-    left: -7,
+    left: -6,
   },
   cutoutRight: {
-    right: -7,
+    right: -6,
   },
   cardLabel: {
-    marginTop: spacing.sm,
-    fontSize: 12,
+    marginTop: 8,
+    fontSize: 11.5,
     fontWeight: typography.weight.semiBold,
     color: colors.textPrimary,
     textAlign: 'center',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { X } from 'lucide-react-native';
-import { colors, typography, spacing, radii } from '../../theme';
+import { colors, typography, spacing, radii, shadows } from '../../theme';
 
 interface BusinessProfileBannerProps {
   onLinkPress: () => void;
@@ -25,7 +25,7 @@ export const BusinessProfileBanner: React.FC<BusinessProfileBannerProps> = ({
         />
       </View>
 
-      {/* Info Text */}
+      {/* Info Text Column */}
       <View style={styles.textContainer}>
         <Text style={styles.title}>Business Profile</Text>
         <Text style={styles.subtitle}>Link profile for work use</Text>
@@ -35,7 +35,7 @@ export const BusinessProfileBanner: React.FC<BusinessProfileBannerProps> = ({
       <TouchableOpacity
         style={styles.linkButton}
         onPress={onLinkPress}
-        activeOpacity={0.8}
+        activeOpacity={0.85}
       >
         <Text style={styles.linkButtonText}>Link Now</Text>
       </TouchableOpacity>
@@ -46,7 +46,7 @@ export const BusinessProfileBanner: React.FC<BusinessProfileBannerProps> = ({
         onPress={() => setDismissed(true)}
         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
       >
-        <X size={16} color={colors.textPrimary} strokeWidth={2.2} />
+        <X size={16} color="#333333" strokeWidth={2.4} />
       </TouchableOpacity>
     </View>
   );
@@ -56,57 +56,56 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.white,
+    backgroundColor: '#FFFFFF',
     marginHorizontal: spacing.lg,
-    marginBottom: spacing.xl,
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.md + 2,
+    marginTop: -spacing.xs,
+    marginBottom: spacing.lg,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
     borderRadius: radii.card,
     borderWidth: 1,
-    borderColor: colors.borderSubtle,
+    borderColor: '#EAEAEA',
+    ...shadows.subtle,
   },
   mascotCircle: {
     width: 44,
     height: 44,
-    borderRadius: radii.circle,
-    backgroundColor: '#FFFFFF',
+    borderRadius: 22,
+    backgroundColor: '#E0F7F9', // Authentic light cyan circle
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: spacing.md,
-    overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
+    marginRight: 12,
   },
   mascotImage: {
-    width: 36,
-    height: 36,
+    width: 34,
+    height: 34,
   },
   textContainer: {
     flex: 1,
   },
   title: {
-    fontSize: typography.size.sm + 1,
+    fontSize: 14,
     fontWeight: typography.weight.bold,
     color: colors.textPrimary,
   },
   subtitle: {
-    fontSize: typography.size.xs + 1,
-    color: colors.textSecondary,
+    fontSize: 11.5,
+    color: '#64748B',
     marginTop: 2,
   },
   linkButton: {
     backgroundColor: colors.primaryCyan,
     paddingVertical: 7,
-    paddingHorizontal: spacing.md,
-    borderRadius: radii.sm + 1,
-    marginRight: spacing.sm,
+    paddingHorizontal: 14,
+    borderRadius: 8,
+    marginRight: 8,
   },
   linkButtonText: {
     color: colors.white,
-    fontSize: typography.size.xs + 1,
+    fontSize: 12.5,
     fontWeight: typography.weight.bold,
   },
   closeButton: {
-    padding: spacing.xs,
+    padding: 2,
   },
 });

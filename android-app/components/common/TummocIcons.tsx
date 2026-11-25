@@ -64,43 +64,66 @@ export const MetroTicketIcon: React.FC<IconProps> = ({
  * QR matrix markers on top and bold dark pill with "ALL-IN-ONE" below.
  */
 export const AllInOneTicketIcon: React.FC<IconProps> = ({
-  width = 46,
-  height = 30,
+  width = 36,
+  height = 22,
   size,
   color = '#0F2F38',
 }) => {
   const w = size ?? width;
-  const h = size ? size * (30 / 46) : height;
+  const h = size ? size * (22 / 36) : height;
   return (
-    <Svg width={w} height={h} viewBox="0 0 46 30" fill="none">
+    <Svg width={w} height={h} viewBox="0 0 36 22" fill="none">
       {/* QR Corner Markers */}
-      <Rect x="7" y="1" width="4.5" height="4.5" rx="0.8" fill={color} />
-      <Rect x="17" y="1" width="4.5" height="4.5" rx="0.8" fill={color} />
-      <Rect x="26" y="1" width="4.5" height="4.5" rx="0.8" fill={color} />
-      <Rect x="35" y="1" width="4.5" height="4.5" rx="0.8" fill={color} />
-
-      {/* Second row dots */}
-      <Rect x="11.5" y="8" width="4" height="4" rx="0.8" fill={color} />
-      <Rect x="21.5" y="8" width="4" height="4" rx="0.8" fill={color} />
-      <Rect x="31" y="8" width="4" height="4" rx="0.8" fill={color} />
+      <Rect x="4" y="1" width="3.5" height="3.5" rx="0.6" fill={color} />
+      <Rect x="12" y="1" width="3.5" height="3.5" rx="0.6" fill={color} />
+      <Rect x="20" y="1" width="3.5" height="3.5" rx="0.6" fill={color} />
+      <Rect x="28" y="1" width="3.5" height="3.5" rx="0.6" fill={color} />
 
       {/* Dark Pill Bar */}
-      <Rect x="1" y="15" width="44" height="14" rx="3.5" fill={color} />
+      <Rect x="1" y="9" width="34" height="12" rx="2.5" fill={color} />
       {/* White ALL-IN-ONE Label */}
       <SvgText
-        x="23"
-        y="25.5"
+        x="18"
+        y="17.5"
         fill="#FFFFFF"
-        fontSize="7.2"
+        fontSize="5.8"
         fontWeight="bold"
         textAnchor="middle"
-        letterSpacing="0.4"
+        letterSpacing="0.3"
       >
         ALL-IN-ONE
       </SvgText>
     </Svg>
   );
 };
+
+/**
+ * 3b. Auto Rickshaw Icon (Commute options: Direct Ride)
+ * Features yellow roof canopy and dark body matching original Tummoc Direct Ride tile.
+ */
+export const AutoRickshawIcon: React.FC<{ size?: number; color?: string }> = ({
+  size = 24,
+}) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    {/* Yellow curved roof canopy */}
+    <Path
+      d="M4 8.5C4 5.5 6.5 3.5 12 3.5s8 2 8 5v2H4v-2z"
+      fill="#FFB800"
+    />
+    {/* Dark Body Frame */}
+    <Path
+      d="M3.5 10.5h17v7a2.5 2.5 0 01-2.5 2.5h-12A2.5 2.5 0 013.5 17.5v-7z"
+      fill="#0F2F38"
+    />
+    {/* Windshield */}
+    <Rect x="6" y="11" width="12" height="4" rx="0.8" fill="#FFFFFF" opacity={0.9} />
+    {/* Headlights */}
+    <Circle cx="7.5" cy="17" r="1.2" fill="#FFB800" />
+    <Circle cx="16.5" cy="17" r="1.2" fill="#FFB800" />
+    {/* Front Wheel / Mudguard */}
+    <Rect x="10.8" y="17.5" width="2.4" height="4.5" rx="1.2" fill="#000000" />
+  </Svg>
+);
 
 /**
  * 4. Bottom Navbar: Tummoc Home Icon (Solid navy house)

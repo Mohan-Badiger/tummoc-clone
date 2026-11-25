@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
+import { AutoRickshawIcon } from '../common/TummocIcons';
 import { colors, typography, spacing, radii } from '../../theme';
 
 interface CommuteOptionsProps {
@@ -11,6 +12,7 @@ export const CommuteOptions: React.FC<CommuteOptionsProps> = ({
 }) => {
   return (
     <View style={styles.container}>
+      {/* Section Title */}
       <Text style={styles.sectionTitle}>Commute options available</Text>
 
       <View style={styles.tilesRow}>
@@ -46,7 +48,7 @@ export const CommuteOptions: React.FC<CommuteOptionsProps> = ({
           <Text style={styles.tileLabel}>Metro</Text>
         </View>
 
-        {/* 3. Direct Ride (Scooter / Bike taxi with orange Cash badge) */}
+        {/* 3. Direct Ride (Auto Rickshaw with orange Cash badge) */}
         <View style={styles.tileWrapper}>
           <TouchableOpacity
             style={styles.tile}
@@ -57,11 +59,7 @@ export const CommuteOptions: React.FC<CommuteOptionsProps> = ({
             <View style={styles.cashBadge}>
               <Text style={styles.cashText}>Cash</Text>
             </View>
-            <Image
-              source={require('../../assets/icons/scooter.png')}
-              style={styles.scooterIcon}
-              resizeMode="contain"
-            />
+            <AutoRickshawIcon size={25} />
           </TouchableOpacity>
           <Text style={styles.tileLabel}>Direct Ride</Text>
         </View>
@@ -92,10 +90,10 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xl,
   },
   sectionTitle: {
-    fontSize: typography.size.md,
+    fontSize: 15,
     fontWeight: typography.weight.bold,
     color: colors.textPrimary,
-    marginBottom: spacing.md,
+    marginBottom: 12,
   },
   tilesRow: {
     flexDirection: 'row',
@@ -109,37 +107,32 @@ const styles = StyleSheet.create({
   tile: {
     width: '100%',
     aspectRatio: 1,
-    backgroundColor: '#F3F6F8', // Authentic soft light gray tile
-    borderRadius: radii.card,
+    backgroundColor: '#F4F7F8', // Authentic soft light gray tile
+    borderRadius: 14,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
   },
   busIcon: {
-    width: 32,
-    height: 32,
+    width: 24,
+    height: 20,
     tintColor: colors.textPrimary,
   },
   metroIcon: {
-    width: 30,
-    height: 33,
-    tintColor: colors.textPrimary,
-  },
-  scooterIcon: {
-    width: 28,
-    height: 34,
+    width: 21,
+    height: 23,
     tintColor: colors.textPrimary,
   },
   railIcon: {
-    width: 28,
-    height: 32,
+    width: 17,
+    height: 22,
     tintColor: colors.textPrimary,
   },
   cashBadge: {
     position: 'absolute',
     top: -8,
     backgroundColor: colors.accentOrangeCash,
-    paddingHorizontal: 8,
+    paddingHorizontal: 7,
     paddingVertical: 1.5,
     borderRadius: radii.pill,
     zIndex: 2,
@@ -150,7 +143,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   tileLabel: {
-    marginTop: spacing.sm,
+    marginTop: 8,
     fontSize: 11.5,
     fontWeight: typography.weight.medium,
     color: colors.textPrimary,
