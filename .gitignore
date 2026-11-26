@@ -39,3 +39,6 @@ reference/screenshots/video_frames/
 Thumbs.db
 .vscode/
 .idea/
+
+*.apk
+apk-output/
