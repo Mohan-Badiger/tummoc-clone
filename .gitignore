@@ -13,7 +13,6 @@ web-build/
 expo-env.d.ts
 
 # Native builds
-android-app/android/
 android-app/ios/
 .kotlin/
 *.orig.*

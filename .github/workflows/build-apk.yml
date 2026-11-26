@@ -32,17 +32,11 @@ jobs:
         working-directory: ./android-app
         run: npm install --legacy-peer-deps
 
-      - name: Expo Prebuild Android
-        working-directory: ./android-app
-        env:
-          EXPO_NO_TELEMETRY: '1'
-        run: npx expo prebuild --platform android --no-install
-
       - name: Build Standalone Android APK
         working-directory: ./android-app/android
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon
+          ./gradlew assembleRelease --no-daemon --stacktrace
 
       - name: Copy APK to artifacts directory
         run: |
