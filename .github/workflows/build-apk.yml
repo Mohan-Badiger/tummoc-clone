@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build Standalone APK
@@ -25,26 +28,41 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install app dependencies
         working-directory: ./android-app
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Expo Prebuild Android
         working-directory: ./android-app
+        env:
+          EXPO_NO_TELEMETRY: '1'
         run: npx expo prebuild --platform android --no-install
 
-      - name: Build Installable Android APK
+      - name: Build Standalone Android APK
         working-directory: ./android-app/android
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon
+          ./gradlew assembleRelease --no-daemon
 
-      - name: Upload Installable APK Artifact
+      - name: Copy APK to artifacts directory
+        run: |
+          mkdir -p apk-output
+          cp android-app/android/app/build/outputs/apk/release/*.apk apk-output/Tummoc-Clone-v3.6.9.apk
+
+      - name: Upload Standalone APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: tummoc-app-debug.apk
-          path: android-app/android/app/build/outputs/apk/debug/app-debug.apk
-          retention-days: 14
+          name: Tummoc-Clone-v3.6.9.apk
+          path: apk-output/Tummoc-Clone-v3.6.9.apk
+          retention-days: 30
+
+      - name: Create GitHub Release with APK
+        uses: softprops/action-gh-release@v2
+        continue-on-error: true
+        with:
+          tag_name: v3.6.9
+          name: Tummoc Clone v3.6.9 Standalone APK
+          body: |
+            Standalone Android APK for Tummoc Clone (v3.6.9).
+            Installs directly on Android devices without requiring Expo Go.
+          files: apk-output/Tummoc-Clone-v3.6.9.apk
