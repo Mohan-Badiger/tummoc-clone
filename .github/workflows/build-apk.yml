@@ -17,13 +17,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 20
+      - name: Setup Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Setup Java 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
@@ -41,13 +41,13 @@ jobs:
       - name: Copy APK to artifacts directory
         run: |
           mkdir -p apk-output
-          cp android-app/android/app/build/outputs/apk/release/*.apk apk-output/Tummoc-Clone-v3.6.9.apk
+          cp android-app/android/app/build/outputs/apk/release/*.apk apk-output/Tummoc-v3.6.9.apk
 
       - name: Upload Standalone APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Tummoc-Clone-v3.6.9.apk
-          path: apk-output/Tummoc-Clone-v3.6.9.apk
+          name: Tummoc-v3.6.9.apk
+          path: apk-output/Tummoc-v3.6.9.apk
           retention-days: 30
 
       - name: Create GitHub Release with APK
@@ -55,8 +55,8 @@ jobs:
         continue-on-error: true
         with:
           tag_name: v3.6.9
-          name: Tummoc Clone v3.6.9 Standalone APK
+          name: Tummoc v3.6.9 Standalone APK
           body: |
-            Standalone Android APK for Tummoc Clone (v3.6.9).
+            Standalone Android APK for Tummoc (v3.6.9).
             Installs directly on Android devices without requiring Expo Go.
-          files: apk-output/Tummoc-Clone-v3.6.9.apk
+          files: apk-output/Tummoc-v3.6.9.apk
